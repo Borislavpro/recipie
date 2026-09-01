@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loaded BBQ Chicken & Potato Bowl Recipe</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- AOS Animations Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #fdfdfd;
+            --accent-color: #e67e22;
+            --text-dark: #2d3436;
+            --text-light: #636e72;
+            --shadow: 0 10px 30px rgba(0,0,0,0.05);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),
+                        url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        /* --- Section Layout --- */
+        .section {
+            padding: 100px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        /* --- Ingredients Section --- */
+        .ingredients-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .ingredients-image {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .ingredients-image:hover {
+            transform: scale(1.02);
+        }
+
+        .ingredients-list {
+            list-style: none;
+        }
+
+        .ingredients-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .ingredients-list li:hover {
+            padding-left: 10px;
+            color: var(--accent-color);
+        }
+
+        .ingredients-list li::before {
+            content: '✓';
+            margin-right: 15px;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* --- Method Section --- */
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .method-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .method-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .step-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: rgba(230, 126, 34, 0.1);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-weight: bold;
+        }
+
+        .method-card h3 {
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            font-size: 1.5rem;
+        }
+
+        .method-card p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: #fafafa;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-10px) translateX(-50%);}
+            60% {transform: translateY(-5px) translateX(-50%);}
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .ingredients-container {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-aos="zoom-out" data-aos-duration="1500">Loaded BBQ Chicken <br>& Potato Bowl</h1>
+            <p data-aos="fade-up" data-aos-delay="300">A comforting blend of crispy golden potatoes and succulent BBQ chicken, topped with a zing of sour pickles.</p>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#e67e22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+        </div>
+    </section>
+
+    <!-- Ingredients Section -->
+    <section class="section">
+        <h2 class="section-title" data-aos="fade-up">Ingredients</h2>
+        <div class="ingredients-container">
+            <img src="https://www.image2url.com/r2/default/images/1788255321272-ad519874-c526-4243-8396-7fb992a4ee55.avif" alt="Fresh ingredients" class="ingredients-image" data-aos="fade-right">
+            <ul class="ingredients-list" data-aos="fade-left">
+                <li>1 lb Boneless, skinless chicken breast, cubed</li>
+                <li>2-3 medium Potatoes (Russet or Yukon Gold), cubed</li>
+                <li>1 large Onion, sliced thinly</li>
+                <li>Barbecue sauce (to preference)</li>
+                <li>Sour pickles (optional, for garnish)</li>
+                <li>Kosher salt, black pepper, and garlic powder</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Method Section -->
+    <section class="section" style="background-color: #fff;">
+        <h2 class="section-title" data-aos="fade-up">Cooking Method</h2>
+        <div class="method-grid">
+            <!-- Step 1 -->
+            <div class="method-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="step-number">01</div>
+                <h3>Preparation</h3>
+                <p>Preheat your oven specifically to 400°F (200°C). Ensure a baking sheet is ready for the potatoes.</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="method-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="step-number">02</div>
+                <h3>Roast Potatoes</h3>
+                <p>Combine cubed potatoes with olive oil, salt, pepper, and garlic powder. Roast for 25-30 minutes until crispy and golden brown.</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="method-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="step-number">03</div>
+                <h3>Cook Chicken & Onion</h3>
+                <p>Sauté cubed chicken and sliced onion over medium-high heat until chicken is cooked through and onions are caramelized.</p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="method-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="step-number">04</div>
+                <h3>Combine & Simmer</h3>
+                <p>Reduce heat to medium-low. Pour in BBQ sauce, stir to coat, and simmer for 3-5 minutes to meld the flavors.</p>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="method-card" data-aos="fade-up" data-aos-delay="500" style="grid-column: span 1;">
+                <div class="step-number">05</div>
+                <h3>Assemble & Serve</h3>
+                <p>Create a base of crispy potatoes. Spoon the saucy BBQ chicken over them. Top with sour pickles for a sharp contrast.</p>
+            </div>
+
+            <!-- Final Image Card -->
+            <div class="method-card" data-aos="fade-up" data-aos-delay="600" style="background: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=600') center/cover; display: flex; align-items: flex-end; padding: 0;">
+                <div style="background: rgba(255,255,255,0.9); width: 100%; padding: 20px; font-family: 'Playfair Display'; font-weight: bold; text-align: center;">Enjoy your meal!</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Gourmet Bowls. Made with passion for flavor.</p>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-in-out'
+        });
+
+        // Smooth scroll for indicator
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
